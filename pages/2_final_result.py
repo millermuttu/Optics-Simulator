@@ -68,7 +68,7 @@ with user_input:
         st.slider(label="Please chnage the incident angle here (in degrees)",
                 min_value=0,
                 max_value=200,
-                value=np.int(st.session_state.incident_angle_calculated),
+                value=int(st.session_state.incident_angle_calculated),
                 key='incident_angle',
                 step=1)
     st.session_state.beta_min = np.round(calcualte_beta(st.session_state.span_start),2)
