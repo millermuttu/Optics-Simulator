@@ -4,3 +4,4 @@ matplotlib
 scipy
 Pillow
 streamlit_extras
+PyQt5
