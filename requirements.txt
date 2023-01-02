@@ -1,6 +1,6 @@
 streamlit
 numpy
-mathplotlib
+matplotlib
 scipy
 PIL
 streamlit_extras
