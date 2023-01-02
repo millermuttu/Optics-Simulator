@@ -7,7 +7,7 @@ from matplotlib import patches
 from matplotlib import lines
 from matplotlib import cm
 
-import raytracing as rt
+# import raytracing as rt
 
 class Canvas(object):
     '''

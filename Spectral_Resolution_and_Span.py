@@ -2,8 +2,8 @@ import streamlit as st
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-from raytracing import *
 from PIL import Image
+# from numericalunits import nm, mm, cm
 from streamlit.components.v1 import html
 from streamlit_extras.switch_page_button import switch_page
 
