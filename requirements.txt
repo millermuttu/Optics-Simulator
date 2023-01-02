@@ -1,7 +1,7 @@
-streamlit
+streamlit==1.16.0
 numpy
 matplotlib
 scipy
 Pillow
-streamlit_extras
+streamlit-extras==0.2.4
 PyQt5==5.15.4
