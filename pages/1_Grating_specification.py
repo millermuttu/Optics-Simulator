@@ -6,6 +6,7 @@ from PIL import Image
 # from numericalunits import nm, mm, cm
 from streamlit.components.v1 import html
 from streamlit_extras.switch_page_button import switch_page
+from streamlit_extras.add_vertical_space import add_vertical_space
 
 ######################## functions #####################################
 @st.cache
@@ -16,10 +17,12 @@ def closest_value(input_list, input_value):
 ########################################################################
 
 st.session_state.update(st.session_state)
-st.title("Grating Specification :cd:")
+st.title(":blue[Grating Specification:]")
+add_vertical_space(3)
+
 
 with st.sidebar:
-    st.subheader("Please input the Grating Specification :cd:")
+    st.subheader("Please input the Grating Specification...")
 
 user_input = st.container()
 groove_list = [300,600,1200,1800,2400]
@@ -50,11 +53,11 @@ with user_input:
     st.info(f"The entered Spectral Resolution is {st.session_state['spectral_resolution']} nm \
                 with span of {st.session_state.span} nm", icon="ℹ️")
 
-    st.warning(f"According to your input the calculated Number of grooves per mm for the grating is :red[{st.session_state.N}]\
+    st.warning(f"According to your input the calculated Number of grooves per mm for the grating is {st.session_state.N}\
                 But the standard grating grooves are 300, 600, 1200, 1800, 2400.\
-                we would recomend using :green[{st.session_state.N}]\
+                we would recomend using {st.session_state.N}\
                 please change if you wish by using below dropdown", icon="⚠️")
-    st.selectbox(label="Plese change the N value if you wish to (Grooves/mm)",
+    st.selectbox(label="_Please change the N value if you wish to (Grooves/mm)_",
                  options=groove_list,
                  key='N_input',
                  index=groove_list.index(st.session_state.N))
@@ -69,7 +72,7 @@ with user_input:
             :green[{st.session_state.blaze_wavelength}]nm is :green[{st.session_state.blaze_angle_calculated}]. Please note \
                 that this blaze angle is for littrow configureation", icon="ℹ️")
 
-    st.number_input(label="Do you wish to change the blaze angle",
+    st.number_input(label="_Please change the blaze angle if required_",
                   value=st.session_state.page_1['blaze_angle_input'],
                   min_value=5.0,
                   max_value=35.0,
