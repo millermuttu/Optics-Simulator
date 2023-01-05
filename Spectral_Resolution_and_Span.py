@@ -15,7 +15,7 @@ st.session_state.update(st.session_state)
 st.title(":blue[Welcome to the Optics Simulator]")
 
 colored_header(
-    label="Guided way to design your spectrometer with ray tracing simualation",
+    label="Guided way to design your spectrometer with ray tracing simulation",
     description="A easy way to design your first spectrometer",
     color_name="violet-70",
 )
