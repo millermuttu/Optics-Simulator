@@ -30,7 +30,7 @@ def design_rendering(f1, f2, lens_aperture, grating_aperture, N, sensor_width,
     sensor_width = sensor_width
 
     # Simulate system for these wavelengths
-    lmb = list(np.linspace(start_wavelength, end_wavelength, 11)*1e-9)
+    lmb = list(np.linspace(start_wavelength, end_wavelength, 10)*1e-9)
 
     components = []
     rays = []
@@ -45,7 +45,8 @@ def design_rendering(f1, f2, lens_aperture, grating_aperture, N, sensor_width,
     components.append(Lens(f=f1,
                               aperture=lens_aperture,
                               pos=[f1, 0],
-                              theta=0))
+                              theta=0,
+                              name='F1'))
 
     
     # Place a diffraction grating
@@ -63,10 +64,15 @@ def design_rendering(f1, f2, lens_aperture, grating_aperture, N, sensor_width,
     x1 = (2*f1) + f2*np.cos(-theta_design)
     y1 = f2*np.sin(-theta_design)
 
+    # components.append(Aperture(aperture=lens_aperture,
+    #                             pos=[x1,y1/2],
+    #                             theta=theta_design))
+
     components.append(Lens(f=f2,
-                              aperture=lens_aperture,
+                              aperture=grating_aperture,
                               pos=[x1, y1],
-                              theta=(theta_design)))
+                              theta=(theta_design),
+                              name='F2'))
 
     # Place a sensor
     x2 = x1 + f2*np.cos(-theta_design)

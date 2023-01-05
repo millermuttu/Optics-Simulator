@@ -78,6 +78,7 @@ with user_input:
     st.session_state.beta_min = np.round(calcualte_beta(st.session_state.span_start),2)
     st.session_state.beta_max = np.round(calcualte_beta(st.session_state.span_end),2)
     st.session_state.optical_span = st.session_state.beta_max-st.session_state.beta_min
+    st.session_state.beta_middle = (st.session_state.beta_min + st.session_state.beta_max)/2
 
     add_vertical_space(1)
 
@@ -135,7 +136,7 @@ with user_input:
                             start_wavelength=st.session_state.span_start,
                             end_wavelength=st.session_state.span_end,
                             incident_angle=st.session_state.incident_angle,
-                            difracted_angle=st.session_state.beta_min,
+                            difracted_angle=st.session_state.beta_middle,
                             N=st.session_state.N)
     
     if os.path.exists("img/grating.png"):
