@@ -1,4 +1,4 @@
-# Welcome to the Optics simulater webapp.
+# Welcome to the Optics simulator webapp.
 
 - designing the spectrometer or buying an spectrometer is always a costly affair, after buying the components required to build a spectrometer and realizing that they are not suitable or fit for your requiremnt, here in our simulater you can go through the guided steps to arrive at your required specification for the design you are thinking off, and then proceed with the purchase of sugested comopnents along with visualization of raytracing simulatation.
 

@@ -37,7 +37,7 @@ def calcualte_beta(wavelength):
 ###################################################################################
 
 st.session_state.update(st.session_state)
-st.title("Angle, line array and lens Specification:")
+st.title(":blue[Angle, Line array & Lens Specification:]")
 add_vertical_space(3)
 
 user_input = st.container()
@@ -82,7 +82,7 @@ with user_input:
 
     add_vertical_space(1)
 
-    with st.expander("Optical span of the system is:"):
+    with st.expander("Dispersion span of the system is:"):
         # st.info(f"Optical span of the system is \n\t", icon="ℹ️")
         st.markdown(f"###### Beta minimum = {st.session_state.beta_min}")
         st.markdown(f"###### Beta maximum = {st.session_state.beta_max}")
@@ -147,21 +147,25 @@ with user_input:
 
     st.header("Final design values:")
 
+    st.subheader("User input:")
     a1, a2, a3 = st.columns(3)
     a1.metric(label="Spectral Resolution(nm)", value=st.session_state.spectral_resolution)
     a2.metric(label="Minimum wavelength(nm)", value=st.session_state.span_start)
     a3.metric(label="Maximum wavelength(nm)", value=st.session_state.span_end)
     style_metric_cards()
 
+    st.subheader("Resolution:")
     f1, f2, f3 = st.columns(3)
     f1.metric(label="Resolution achieved (nm)", value=st.session_state.Optical_resolution)
     style_metric_cards()
 
+    st.subheader("Grating specification:")
     b1, b2, b3 = st.columns(3)
     b1.metric(label="Grooves per mm", value=st.session_state.N)
     b2.metric(label="Blaze angle", value=f"{st.session_state.blaze_angle}°")
     style_metric_cards()
 
+    st.subheader("Optical specification:")
     c1, c2 , c3 = st.columns(3)
     c1.metric(label="Incident angle", value=f"{st.session_state.incident_angle}°")
     c2.metric(label="Minimum difracted angle", value=f"{st.session_state.beta_min}°")
@@ -174,10 +178,11 @@ with user_input:
     d3.metric(label="Slit width in mm", value=st.session_state.slit_width)
     style_metric_cards()
 
+    st.subheader("Detector specification:")
     e1, e2, e3 = st.columns(3)
     e1.metric(label="Pixel size (in um)", value=st.session_state.pixel_size)
     e2.metric(label="Sensor width (in mm)", value=st.session_state.sensor_width)
-    style_metric_cards()
+    style_metric_cards(border_left_color="#FFC0CB", border_size_px=2)
 
     # st.text(st.session_state)
 

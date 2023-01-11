@@ -7,6 +7,7 @@ from PIL import Image
 from streamlit.components.v1 import html
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.add_vertical_space import add_vertical_space
+from annotated_text import annotated_text, annotation
 
 ######################## functions #####################################
 @st.cache
@@ -50,11 +51,18 @@ st.session_state.N = closest_value(groove_list, st.session_state.N_calculated)
 
 with user_input:
 
-    st.info(f"The entered Spectral Resolution is {st.session_state['spectral_resolution']} nm \
-                with span of {st.session_state.span} nm", icon="ℹ️")
+    annotated_text(
+    annotation(f"The entered Spectral Resolution is {st.session_state['spectral_resolution']} nm \
+                with span of {st.session_state.span} nm",background='#DBF9DB', color="black", 
+                border="1px solid red",
+                )
+    )
+    add_vertical_space(1)
+    # st.info(f"The entered Spectral Resolution is {st.session_state['spectral_resolution']} nm \
+    #             with span of {st.session_state.span} nm", icon="ℹ️")
 
-    st.warning(f"According to your input the calculated Number of grooves per mm for the grating is {st.session_state.N}\
-                But the standard grating grooves are 300, 600, 1200, 1800, 2400.\
+    st.warning(f"According to your input the calculated Number of grooves per mm for the grating is {st.session_state.N},\
+                the standard grating grooves are 300, 600, 1200, 1800, 2400.\
                 we would recomend using {st.session_state.N}\
                 please change if you wish by using below dropdown", icon="⚠️")
     st.selectbox(label="_Please change the N value if you wish to (Grooves/mm)_",
@@ -67,6 +75,15 @@ with user_input:
 
     ## calculate the blaze angle  (arcsin(m*blaze_eavelength/2*D))
     st.session_state.blaze_angle_calculated = np.round(np.arcsin((st.session_state.m*st.session_state.blaze_wavelength*(1e-9))/(2*st.session_state.D*(1e-3)))*180/np.pi,2)
+
+    # annotated_text(
+    # annotation(f"For the selected N values of grating, calculated blaze angle based on blaze wavelength of \
+    #         {st.session_state.blaze_wavelength}nm is {st.session_state.blaze_angle_calculated}. Please note \
+    #             that this blaze angle is for littrow configureation",background='white', color="black", 
+    #             border="1px solid red",
+    #             )
+    # )
+    # add_vertical_space(1)
 
     st.info(f"For the selected N values of grating, calculated blaze angle based on blaze wavelength of \
             :green[{st.session_state.blaze_wavelength}]nm is :green[{st.session_state.blaze_angle_calculated}]. Please note \

@@ -31,7 +31,7 @@ if 'page_0' not in st.session_state:
     st.session_state.page_0 = {
         'spec_res_input': 1.0,
         'span_start_input': 400.0,
-        'span_end_input': 800.0,
+        'span_end_input': 400.0,
         'continue_btn_state' : True
     }
 
