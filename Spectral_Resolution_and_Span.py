@@ -59,7 +59,7 @@ with user_input:
                         value=st.session_state.page_0['span_end_input'],
                         key='span_end')
     with col2:
-        image = Image.open('img/resolution_and_span.png')
+        image = Image.open('img/resolution_and_span_2.png')
         st.image(image, "Spectral resolution and Span example")
     
 
