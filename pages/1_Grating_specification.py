@@ -61,14 +61,15 @@ with user_input:
     # st.info(f"The entered Spectral Resolution is {st.session_state['spectral_resolution']} nm \
     #             with span of {st.session_state.span} nm", icon="ℹ️")
 
-    st.warning(f"According to your input the calculated Number of grooves per mm for the grating is {st.session_state.N},\
+    st.warning(f"According to your input the calculated Number of grooves per mm for the grating is _{st.session_state.N}_,\
                 the standard grating grooves are 300, 600, 1200, 1800, 2400.\
-                we would recomend using {st.session_state.N}\
+                we would recomend using _{st.session_state.N}_\
                 please change if you wish by using below dropdown", icon="⚠️")
-    st.selectbox(label="_Please change the N value if you wish to (Grooves/mm)_",
+    st.selectbox(label="_**Please change the N value if you wish to (Grooves/mm)**_",
                  options=groove_list,
                  key='N_input',
-                 index=groove_list.index(st.session_state.N))
+                 index=groove_list.index(st.session_state.N),
+                 help="number of constant line spacings in a blazed grating, this determines the magnitude of the wavelength splitting caused by the grating")
 
     ## calculate the "D" the distance between two holes in grating
     st.session_state.D = 1/st.session_state.N_input
@@ -86,16 +87,34 @@ with user_input:
     # add_vertical_space(1)
 
     st.info(f"For the selected N values of grating, calculated blaze angle based on blaze wavelength of \
-            :green[{st.session_state.blaze_wavelength}]nm is :green[{st.session_state.blaze_angle_calculated}]. Please note \
+            _{st.session_state.blaze_wavelength}_ nm is _{st.session_state.blaze_angle_calculated}_. Please note \
                 that this blaze angle is for littrow configureation", icon="ℹ️")
 
     st.number_input(label="_Please change the blaze angle if required_",
                   value=st.session_state.page_1['blaze_angle_input'],
                   min_value=5.0,
                   max_value=35.0,
-                  key='blaze_angle')
-    continue_btn = st.button("Continue", help="Click to sumbit and navigate to next page")
+                  key='blaze_angle',
+                  help="The grating lines possess a triangular, sawtooth-shaped cross section, forming a step structure. The steps are tilted at the so-called blaze angle theta with respect to the grating surface. Accordingly, the angle between step normal and grating normal is blaze angle")
+    
+    with st.expander("**🎓 Know more about blaze angle:**"):
+        grating_image = Image.open('img/Blazed_grating.png')
+        st.image(grating_image, "grating representation")
+        st.text(f"""
+        Like every optical grating, a blazed grating has a constant line spacing d, 
+        determining the magnitude of the wavelength splitting caused by the grating. 
+        The grating lines possess a triangular, sawtooth-shaped cross section, forming 
+        a step structure. The steps are tilted at the so-called blaze angle theta_B 
+        with respect to the grating surface. Accordingly, the angle between step normal
+        and grating normal is theta_B.
 
+        The blaze angle is optimized to maximize efficiency for the wavelength of the 
+        used light. Descriptively, this means theta_B is chosen such that the beam 
+        diffracted at the grating and the beam reflected at the steps are both deflected 
+        into the same direction. Commonly blazed gratings are manufactured in the 
+        so-called Littrow configuration.""")
+    
+    continue_btn = st.button("Continue", help="Click to sumbit and navigate to next page")
     if continue_btn:
         st.session_state.N = st.session_state.N_input
         st.session_state.page_1['blaze_angle_input'] = st.session_state.blaze_angle

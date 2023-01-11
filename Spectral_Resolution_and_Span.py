@@ -39,25 +39,28 @@ with user_input:
     col1, col2 = st.columns([3,2])
     with col1:
         st.subheader("Enter the spectral resolution and required Span")
-        spec_res_input = st.number_input(label="_Enter Spectral resolution (in nanometers)_",
+        spec_res_input = st.number_input(label="_**Enter Spectral resolution (in nanometers)**_",
                         min_value=0.1,
                         max_value=100.0,
                         step=1.0,
                         value=st.session_state.page_0['spec_res_input'],
-                        key='spectral_resolution')
+                        key='spectral_resolution',
+                        help="to get clarity on Spectral resolution refer to the image next to the input field by enlarging it")
         st.markdown("###### **Enter the start and end wavelength for required Span**")
-        span_start_input = st.number_input(label="_Enter starting wavelength (nm)_",
+        span_start_input = st.number_input(label="_**Enter starting wavelength (nm)**_",
                         min_value=100.0,
                         max_value=2000.0,
                         step=1.0,
                         value=st.session_state.page_0['span_start_input'],
-                        key='span_start')
-        span_end_input = st.number_input(label="_Enter end wavelength (nm)_",
+                        key='span_start',
+                        help="to get clarity on Span refer to the image next to the input field by enlarging it")
+        span_end_input = st.number_input(label="_**Enter end wavelength (nm)**_",
                         min_value=100.0,
                         max_value=2000.0,
                         step=1.0,
                         value=st.session_state.page_0['span_end_input'],
-                        key='span_end')
+                        key='span_end',
+                        help="to get clarity on Span refer to the image next to the input field by enlarging it")
     with col2:
         image = Image.open('img/resolution_and_span_2.png')
         st.image(image, "Spectral resolution and Span example")
