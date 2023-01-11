@@ -90,7 +90,7 @@ with user_input:
             _{st.session_state.blaze_wavelength}_ nm is _{st.session_state.blaze_angle_calculated}_. Please note \
                 that this blaze angle is for littrow configureation", icon="ℹ️")
 
-    st.number_input(label="_Please change the blaze angle if required_",
+    st.number_input(label="_**Please change the blaze angle if required**_",
                   value=st.session_state.page_1['blaze_angle_input'],
                   min_value=5.0,
                   max_value=35.0,

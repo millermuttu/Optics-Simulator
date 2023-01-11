@@ -62,14 +62,14 @@ with user_input:
             if you wish to change the incident angle please use below slider", icon="ℹ️")
     if np.isnan(st.session_state.incident_angle_calculated):
         st.error("caculated incident angle exeeds 90 degree, please set incident angle manually ")
-        st.slider(label="_Please chnage the incident angle here (in degrees)_",
+        st.slider(label="_**Please chnage the incident angle here (in degrees)**_",
                 min_value=0,
                 max_value=200,
                 value=0,
                 key='incident_angle',
                 step=1)
     else:
-        st.slider(label="_Please change the incident angle here (in degrees)_",
+        st.slider(label="_**Please change the incident angle here (in degrees)**_",
                 min_value=0,
                 max_value=200,
                 value=int(st.session_state.incident_angle_calculated),
@@ -88,7 +88,7 @@ with user_input:
         st.markdown(f"###### Beta maximum = {st.session_state.beta_max}")
     add_vertical_space(1)
 
-    st.number_input(label="_Please enter the pixel size of the detector you want to use (in micrometer)_",
+    st.number_input(label="_**Please enter the pixel size of the detector you want to use (in micrometer)**_",
                     min_value=1.0,
                     max_value=100.0,
                     value=st.session_state.page_4['pixel_size_input'],
@@ -107,13 +107,13 @@ with user_input:
 
     c1,c2 = st.columns(2)
     with c2:
-        st.number_input(label="_please set the value of f2:_",
+        st.number_input(label="_**please set the value of f2:**_",
                         min_value=0.1,
                         max_value=200.0,
                         key='f2',
                         value=st.session_state.f2_calculated)
     with c1:
-        st.number_input(label="_please set the value of f1:_",
+        st.number_input(label="_**please set the value of f1:**_",
                         min_value=0.1,
                         max_value=200.0,
                         key='f1',
